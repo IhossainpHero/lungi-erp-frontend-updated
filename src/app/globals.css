@@ -1,0 +1,79 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Bengali:wght@300;400;500;600;700&family=Noto+Serif+Bengali:wght@400;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --primary: #e08600;
+  --primary-light: #f9c97d;
+  --primary-dark: #8f5500;
+  --ink: #1a1208;
+  --ink-soft: #5c4020;
+  --sand: #faf8f4;
+  --sand-border: #ede4d0;
+  --sidebar-w: 260px;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Noto Sans Bengali', sans-serif;
+  background-color: var(--sand);
+  color: var(--ink);
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar { width: 6px; height: 6px; }
+::-webkit-scrollbar-track { background: var(--sand-border); }
+::-webkit-scrollbar-thumb { background: var(--primary-light); border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: var(--primary); }
+
+/* Utility classes */
+.text-bengali { font-family: 'Noto Sans Bengali', sans-serif; }
+.heading-bengali { font-family: 'Noto Serif Bengali', serif; }
+
+/* Page transitions */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(6px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.page-enter {
+  animation: fadeIn 0.25s ease-out;
+}
+
+/* Input focus ring */
+.input-field {
+  @apply w-full px-4 py-2.5 rounded-lg border border-[#ede4d0] bg-white 
+         text-[#1a1208] text-sm outline-none transition-all duration-200
+         focus:border-[#e08600] focus:ring-2 focus:ring-[#e08600]/20
+         placeholder:text-[#7a5730]/40;
+}
+
+/* Button styles */
+.btn-primary {
+  @apply px-5 py-2.5 rounded-lg bg-[#e08600] text-white font-medium text-sm
+         hover:bg-[#b86e00] active:scale-[0.98] transition-all duration-150
+         disabled:opacity-50 disabled:cursor-not-allowed shadow-sm;
+}
+
+.btn-secondary {
+  @apply px-5 py-2.5 rounded-lg bg-white text-[#5c4020] font-medium text-sm
+         border border-[#ede4d0] hover:bg-[#faf8f4] hover:border-[#dfd0b0]
+         active:scale-[0.98] transition-all duration-150;
+}
+
+/* Card */
+.card {
+  @apply bg-white rounded-xl border border-[#ede4d0] shadow-card;
+}
