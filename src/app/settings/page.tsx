@@ -5,19 +5,21 @@ import api, { getErrorMessage } from "@/lib/api";
 import type { IUser, UserRole } from "@/types";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { clsx } from "clsx";
-import { CheckCircle2, Lock, Mail, Phone, ShieldCheck } from "lucide-react";
+import { CheckCircle2, Lock, Phone, ShieldCheck } from "lucide-react";
 import toast from "react-hot-toast";
 
 const roleLabel: Record<UserRole, string> = {
   admin: "অ্যাডমিন",
   moderator: "মডারেটর",
   staff: "স্টাফ",
+  party: "পার্টি",
 };
 
 const roleBadgeClass: Record<UserRole, string> = {
   admin: "bg-red-50 text-red-600 border-red-200",
   moderator: "bg-blue-50 text-blue-700 border-blue-200",
   staff: "bg-gray-50 text-gray-600 border-gray-200",
+  party: "bg-purple-50 text-purple-700 border-purple-200", // ✅ যোগ করো
 };
 
 export default function SettingsPage() {
@@ -113,9 +115,6 @@ export default function SettingsPage() {
                       )}
                     </p>
                     <div className="flex items-center gap-3 text-xs text-[#7a5730]/70 mt-0.5">
-                      <span className="flex items-center gap-1">
-                        <Mail className="w-3 h-3" /> {u.email}
-                      </span>
                       {u.phone && (
                         <span className="flex items-center gap-1">
                           <Phone className="w-3 h-3" /> {u.phone}
