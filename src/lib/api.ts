@@ -3,11 +3,14 @@ import type { ApiResponse } from "@/types";
 import axios, { AxiosError } from "axios";
 
 // ── Axios API instance ───────────────────────────────────────────
+const rawBase = process.env.NEXT_PUBLIC_API_URL || "http://localhost:5000/api";
+const baseURL = /\/api\/?$/.test(rawBase)
+  ? rawBase.replace(/\/$/, "")
+  : `${rawBase.replace(/\/$/, "")}/api`;
+
 const api = axios.create({
-  baseURL: `${process.env.NEXT_PUBLIC_API_URL || "http://localhost:5000"}/api`,
-  headers: {
-    "Content-Type": "application/json",
-  },
+  baseURL,
+  headers: { "Content-Type": "application/json" },
   timeout: 15000,
 });
 
